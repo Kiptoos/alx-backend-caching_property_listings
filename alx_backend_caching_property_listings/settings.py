@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "properties",
+    "properties.apps.PropertiesConfig",
 ]
 
 MIDDLEWARE = [
@@ -71,8 +71,11 @@ CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": os.environ.get("REDIS_URL", "redis://redis:6379/1"),
-        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
         "KEY_PREFIX": "property_listings",
     }
 }
+
 CACHE_TTL = 60 * 60
